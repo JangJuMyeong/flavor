@@ -24,12 +24,39 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.flutter_flavor_test"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdk 33
     ndkVersion flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    flavorDimensions "app"
+
+    productFlavors {
+        dev {
+            dimension "app"
+            applicationId "com.example.flutter_flavor_test.dev"
+            resValue "string", "app_name", "Dev flavor test"
+        }
+
+        devtest {
+            dimension "app"
+            applicationId "com.example.flutter_flavor_test.devTest"
+            resValue "string", "app_name", "Devtest flavor test"
+        }
+
+        product {
+            dimension "app"
+            applicationId "com.example.flutter_flavor_test"
+            resValue "string", "app_name", "flavor test"
+        }
+    }
+
+
+    buildFeatures {
+        buildConfig true
     }
 
     kotlinOptions {
